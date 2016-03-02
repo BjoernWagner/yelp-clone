@@ -34,6 +34,16 @@ feature 'restaurants' do
       expect(page).to have_content "KFC"
       expect(current_path).to eq '/restaurants'
     end
+
+    context 'an invalid restaurant' do
+      it 'does not let you create the restaurant' do
+        visit '/restaurants'
+        click_link 'Add a restaurant'
+        fill_in 'Name', with: 'KF'
+        click_button 'Create Restaurant'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'Viewing restaurants' do
