@@ -1,9 +1,9 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
 <% if @restaurant.reviews.any? %>
+  <h2> Reviews </h2>
   <ul>
     <% @restaurant.reviews.each do |review| %>
-      <h2> Reviews </h2>
       <li>
       <%= review.thoughts %> <strong><%= review.rating %></strong>
       </li>
