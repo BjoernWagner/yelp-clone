@@ -1,23 +1,24 @@
+<%= link_to('Add a restaurant', {action: 'new'})%>
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
-    <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+    <h2> <%= restaurant.name %> </h2>
+    <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
     <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
     <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
     <%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
-    <h3>Reviews For <%=restaurant.name %></h3>
     <% if restaurant.reviews.any? %>
+      <h2> Reviews </h2>
       <ul>
         <% restaurant.reviews.each do |review| %>
           <li>
-          <%= review.thoughts %>, <strong><%= review.rating %></strong>
+          <%= review.thoughts %> <strong><%= review.rating %></strong>
           </li>
         <% end %>
-      </ul> 
-    <% else %>
-      <h3> No reviews yet.. </h3>
-      <%end%>
-    <% end %>
-  <% else %>
-    <h2> no restaurants added yet</h2>
+      </ul>
+      <% else %>
+        <p> this restaurant has no reviews! </h3>
+    <%end%>
   <% end %>
-  <%= link_to('Add a restaurant', {action: 'new'})%>
+<% else %>
+  <h2> no restaurants added yet</h2>
+<% end %>
