@@ -29,6 +29,8 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'devise'
+  gem 'omniauth-facebook'
+  gem 'omniauth-twitter'
 end
 
 # Use ActiveModel has_secure_password
