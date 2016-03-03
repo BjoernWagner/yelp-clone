@@ -21,8 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-
+* Authors
+- Barry Grubb
+- Elaine Finn
+- Mark Hill
+- Bjoern Wagner
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
