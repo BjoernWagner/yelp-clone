@@ -28,6 +28,7 @@ feature 'restaurants' do
 
     scenario 'prompts the user to fill out a form, then displays the restaurant' do
       visit '/restaurants'
+      sign_up
       click_link 'Add a restaurant'
       fill_in 'Name', with: "KFC"
       click_button 'Create Restaurant'
@@ -38,6 +39,7 @@ feature 'restaurants' do
     context 'an invalid restaurant' do
       it 'does not let you create the restaurant' do
         visit '/restaurants'
+        sign_up
         click_link 'Add a restaurant'
         fill_in 'Name', with: 'KF'
         click_button 'Create Restaurant'
@@ -64,6 +66,7 @@ feature 'restaurants' do
 
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
+      sign_up
       click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
@@ -78,9 +81,18 @@ feature 'restaurants' do
 
     scenario 'a user can delete a restaurant' do
       visit '/restaurants'
+      sign_up
       click_link 'Delete KFC'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'Restaurant deleted successfully' 
     end
  end
+
+  context 'users must be signed in' do
+    scenario 'to add a restaurant' do
+      visit('/')
+      click_link('Add a restaurant')
+      expect(page).to have_content('Log in')
+    end
+  end
 end
