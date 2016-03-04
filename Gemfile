@@ -28,6 +28,7 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'capybara'
   gem 'shoulda'
+  gem 'devise'
 end
 
 # Use ActiveModel has_secure_password
